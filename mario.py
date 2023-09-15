@@ -14,5 +14,9 @@ def print_grid(n):
         print()
 
 
-size = get_size() # the function get_size is called
-print_grid(size)
+def main():
+    size = get_size()  # the function get_size is called
+    print_grid(size)
+
+
+main()
