@@ -1,0 +1,38 @@
+1. keep doing the task below
+    1.1. ask user for a number in between 1 and 8
+    1.2 convert it to an int
+    1.2 if the user's input is correct:
+            break (if this is not in a function)
+            return the input (if this is in a function)
+    
+
+
+input: 1
+
+output:
+#
+
+input: 2
+#
+##
+
+input: n
+
+#  1
+## 2
+...
+####...
+(n rows, in each row, n #s)
+
+approach 1: using nested loops
+repeat the following task n times (drawing n rows), i from 0 to n-1
+    in each row, I need to draw (i+1) #s
+    i.e. repeat the following task (i+1) times,
+        draw one #
+    (when finishing one row), print a new line
+
+
+Alternative approach:
+repeat the following task n times (drawing n rows), i from 0 to n-1
+    in each row, I need to draw (i+1) #s
+    i.e. print '#' * (i + 1)
