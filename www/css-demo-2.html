@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Demo</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>CSS Demo</h1>
+      <button id="yellow">Yellow</button>
+    </header>
+    <main>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, iste
+          quidem magni nostrum ex distinctio.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, iste
+          quidem magni nostrum ex distinctio.
+        </p>
+        <p id="blue-color" class="gray-bg">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, iste
+          quidem magni nostrum ex distinctio.
+        </p>
+      </div>
+      <h2>Section 2</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, iste
+        quidem magni nostrum ex distinctio.
+      </p>
+      <p class="gray-bg">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, iste
+        quidem magni nostrum ex distinctio.
+      </p>
+    </main>
+    <footer>Zhi Li &reg;</footer>
+    <script>
+      const body = document.querySelector("body");
+      const yellowBtn = document.querySelector("#yellow");
+      yellowBtn.addEventListener("click", function () {
+        body.style.backgroundColor = "gray";
+      });
+    </script>
+  </body>
+</html>
