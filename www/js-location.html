@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Location</title>
+  </head>
+  <body>
+    <p id="geo-info">?</p>
+    <button>Get Location</button>
+
+    <script>
+      const p = document.querySelector("#geo-info");
+      const btn = document.querySelector("button");
+
+      btn.addEventListener("click", function () {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          p.innerHTML =
+            position.coords.latitude + ", " + position.coords.longitude;
+        });
+      });
+    </script>
+  </body>
+</html>

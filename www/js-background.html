@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Background</title>
+  </head>
+  <body>
+    <button id="green-btn">Green</button>
+    <button id="yellow-btn">Yellow</button>
+
+    <script>
+      const body = document.querySelector("body");
+
+      const greenBtn = document.querySelector("#green-btn");
+
+      greenBtn.onclick = function () {
+        body.style.backgroundColor = "#006644";
+      };
+
+      const yellowBtn = document.querySelector("#yellow-btn");
+
+      //   yellowBtn.onclick = function () {
+      //     body.style.backgroundColor = "yellow";
+
+      //   };
+
+      yellowBtn.addEventListener("click", function () {
+        body.style.backgroundColor = "yellow";
+      });
+    </script>
+  </body>
+</html>
