@@ -15,7 +15,7 @@ def hello():
         name = request.args["name"]
     else:
         name = "guest"
-    return f"<h1>Hello, {name}!</h1>"
+    return render_template("hello.html", username=name)
 
 
 # Create another route("/double?number=3") so the response will be 6
