@@ -29,12 +29,13 @@ def double():
     return f"{res}"
 
 
-@app.route("/s")
+@app.route("/s")  # similar to Amazon search
 def search():
     if "k" in request.args:
         k = request.args["k"]
     else:
-        k = "default search term"
+        k = "the default search term"
+    # Connecting to database to get matching products
     return f"You've found {k}!"
 
 
