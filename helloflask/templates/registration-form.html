@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block body %}
+
+<h1>Registration</h1>
+
+<form action="" method="post">
+  <input type="text" name="name" placeholder="Name" />
+
+  <div>
+    {% for course in courses %}
+    <label>
+      <input type="radio" name="course" value="{{ course }}" />
+      {{course}}</label
+    >
+    {% endfor %}
+  </div>
+
+  <div>
+    <button>Submit</button>
+  </div>
+</form>
+
+{% endblock %}
