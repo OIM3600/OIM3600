@@ -61,10 +61,10 @@
 
 # or until a break statement is encountered
 
-while True:
-    user_input = input("Please enter your password: ")
-    if user_input == "123456":
-        print("You are logged in. Welcome!")
-        break
-    else:
-        print("Wrong password. Try again!")
+# while True:
+#     user_input = input("Please enter your password: ")
+#     if user_input == "123456":
+#         print("You are logged in. Welcome!")
+#         break
+#     else:
+#         print("Wrong password. Try again!")
