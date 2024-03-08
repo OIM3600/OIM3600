@@ -31,7 +31,7 @@ def write_csv():
         "South Korea",
         "Iceland",
         "Mongolia",
-        "India",
+        "Republic of India",
         "Germany",
         "South Africa",
         "Argentina",
