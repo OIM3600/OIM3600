@@ -16,7 +16,7 @@ def get_country_info(name):
         response_text = response.read().decode("utf-8")
         country_data = json.loads(response_text)
 
-    return country_data[0]
+    return country_data[0] # because coutnry_data is a list
 
 
 def write_csv():
