@@ -1,0 +1,26 @@
+body {
+    background-color: azure;
+}
+
+h2 {
+    color: blue;
+    font-family: Arial;
+    border: 2px red solid;
+}
+
+p {
+    background-color: beige;
+    padding: 5px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.hello {
+    color: brown;
+}
+
+.larger {
+    font-size: x-large;
+}
