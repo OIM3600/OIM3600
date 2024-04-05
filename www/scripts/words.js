@@ -1,0 +1,17 @@
+const WORDS = [
+    'Brandon',
+    'Alex',
+    'Jonathon',
+    'Steven',
+    'Gahyeon',
+    'Hanlu',
+    'Matthew',
+    'Jeff',
+    'Peter',
+    'Young',
+    'Han',
+    'Peterson',
+    'Alexandra',
+    'Jason',
+    'Andrew',
+]
