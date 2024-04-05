@@ -8,10 +8,6 @@ h2 {
     border: 2px red solid;
 }
 
-p {
-    background-color: beige;
-    padding: 5px;
-}
 
 h1 {
     text-align: center;
@@ -23,4 +19,18 @@ h1 {
 
 .larger {
     font-size: x-large;
+}
+
+.gray-bg {
+    background-color: gray;
+}
+
+.beige-bg p {
+    background-color: beige;
+    padding: 5px;
+}
+
+a:hover{
+    background-color: yellow;
+    text-decoration: none;
 }
