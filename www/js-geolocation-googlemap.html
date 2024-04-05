@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>geolocation Demo</title>
+  </head>
+
+  <body>
+    <p>Click to get your geolocation</p>
+    <button>Try it!</button>
+    <div id="result"></div>
+    <script>
+      function getLocation() {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      }
+
+      function showPosition(position) {
+        console.log(position);
+        const resultDiv = document.querySelector("#result");
+        resultDiv.innerHTML =
+          "Latitude: " +
+          position.coords.latitude +
+          "<br>Longitude: " +
+          position.coords.longitude +
+          "<br>";
+
+        const link = document.createElement("a");
+        link.href = `https://www.google.com/maps/@${position.coords.latitude},${position.coords.longitude},19z`;
+        link.target = "_blank";
+        link.innerText = "Show Google Map";
+        resultDiv.appendChild(link);
+
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://maps.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+        resultDiv.after(iframe);
+      }
+
+      document.querySelector("button").addEventListener("click", getLocation);
+    </script>
+  </body>
+</html> 
