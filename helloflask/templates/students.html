@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Enrollments</title>
+</head>
+<body>
+    <h1>Student Enrollments</h1>
+    <ul>
+        {% for student in students  %}
+        <li>
+            {{student}} : {{ students[student] }} 
+            <form action=""> 
+
+                <button>Edit</button>
+            </form>
+        </li>
+        {% endfor %}
+        <!-- ninja2 template -->
+    </ul>
+</body>
+</html>

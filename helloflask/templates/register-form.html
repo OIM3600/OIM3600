@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Registration</title>
+  </head>
+  <body>
+    <h1>Course Registration</h1>
+    <form action="" method="post">
+      <input type="text" placeholder="Name..." name="name" />
+      <!-- <select name="course">
+        <option disabled selected>Course</option>
+        <option value="CS">CS</option>
+        <option value="Web">Web</option>
+        <option value="Python">Python</option>
+      </select> -->
+
+      <div>
+        {% for course in courses %}
+
+        <label> <input type="radio" name="course" value="{{course}}" /> {{course}} </label>
+
+        {% endfor %}
+      </div>
+
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
