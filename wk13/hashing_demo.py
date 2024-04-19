@@ -7,7 +7,7 @@ def hash_password_hex(password):
     return hashed_password
 
 
-def hash_base64(password):
+def hash_password_base64(password):
     hashed_password_in_bytes = hashlib.sha256(password.encode()).digest()
     hashed_password = base64.b64encode(hashed_password_in_bytes).decode("utf-8")
     return hashed_password
