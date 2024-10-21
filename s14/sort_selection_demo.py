@@ -1,17 +1,17 @@
-def sort(numbers):
+def sort(arr):
     """
     Selection Sort
     Return a sorted list of numbers
     """
-    n = len(numbers)
+    n = len(arr)
     for i in range(n):
         # Find the smallest in the remaining unsorted list
         min_index = i
         for j in range(i + 1, n):
-            if numbers[j] < numbers[min_index]:
+            if arr[j] < arr[min_index]:
                 min_index = j
         # Swap the smallest number with numbers[i]
-        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]
+        arr[i], arr[min_index] = arr[min_index], arr[i]
 
 
 def main():
