@@ -12,7 +12,7 @@ def get_weather_data(city_name, country_code, api_key):
     """
     Get weather data for a specified city and country using the OpenWeatherMap API.
     """
-    api_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name},{country_code}&APPID={api_key}"
+    api_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name},{country_code}&APPID={api_key}&units=imperial"
 
     with urllib.request.urlopen(api_url) as response:
         response_text = response.read().decode("utf-8")
