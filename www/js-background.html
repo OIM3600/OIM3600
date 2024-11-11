@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Demo</title>
+  </head>
+  <body>
+    <button id="red-button">Change to Red</button>
+    <button id="yellow-button">Change to Yellow</button>
+    <script>
+      const body = document.querySelector("body");
+      document
+        .querySelector("#red-button")
+        .addEventListener("click", function () {
+          body.style.backgroundColor = "red";
+        });
+
+      document
+        .querySelector("#yellow-button")
+        .addEventListener("click", function () {
+          body.style.backgroundColor = "yellow";
+        });
+    </script>
+  </body>
+</html>
