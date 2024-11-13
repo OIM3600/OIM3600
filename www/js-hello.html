@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello</title>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <form action="">
+      <input type="text" id="name-input" />
+      <button>Say Hi</button>
+    </form>
+
+    <script>
+      const input = document.querySelector("#name-input");
+      const h1 = document.querySelector("h1");
+
+      function greet() {
+        const name = input.value;
+        // console.log(name);
+        // window.alert("Hello, " + name);
+        const message = `Welcome to my website, ${name}!`;
+        h1.innerText = message;
+
+        const speech = new SpeechSynthesisUtterance(message);
+        window.speechSynthesis.speak(speech);
+
+        event.preventDefault(); // prevent the page from submitting
+      }
+
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", () => {
+        greet();
+      });
+
+      input.addEventListener("keyup", () => {
+        h1.innerText = `Hello, ${input.value}!`;
+      });
+    </script>
+  </body>
+</html>
