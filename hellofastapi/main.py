@@ -1,5 +1,6 @@
 import datetime
 import json
+import os
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -154,22 +155,32 @@ Bitcoin Example
 bitcoins = {
     "transactions": [],
     "total_cost": 0,
-    # "total_cost_comma": "0",
+    # "total_cost_str": "0",
 }
 
 
-# def save_bitcoins():
-#     with open("data/bitcoins.json", "w") as file:
-#         json.dump(bitcoins, file)
+def save_bitcoins():
+    """Save bitcoin data to JSON file"""
+    if not os.path.exists("data"):
+        os.makedirs("data")
+    with open("data/bitcoins.json", "w") as file:
+        json.dump(bitcoins, file, indent=4)
 
 
-# def load_bitcoins():
-#     global bitcoins
-#     with open("data/bitcoins.json", "r") as file:
-#         bitcoins = json.load(file)
+def load_bitcoins():
+    """Load bitcoin data from JSON file or create new if doesn't exist"""
+    global bitcoins
+    try:
+        if os.path.exists("data/bitcoins.json"):
+            with open("data/bitcoins.json", "r") as file:
+                bitcoins = json.load(file)
+        else:
+            save_bitcoins()
+    except json.JSONDecodeError:
+        save_bitcoins()
 
 
-# load_bitcoins()
+load_bitcoins()
 
 
 @app.get("/bitcoin", response_class=HTMLResponse)
@@ -195,9 +206,9 @@ async def buy_bitcoin(request: Request):
         }
     )
     bitcoins["total_cost"] += total
-    # bitcoins['total_cost_comma'] = f'{str(total):,}'
+    # bitcoins['total_cost_str'] = f'{str(total):,.2f}'
 
-    # save_bitcoins()
+    save_bitcoins()
 
     # return templates.TemplateResponse(
     #     "bitcoin.html", {"request": request, "bitcoins": bitcoins}

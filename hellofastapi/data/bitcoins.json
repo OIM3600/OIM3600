@@ -1,1 +1,23 @@
-{"transactions": [{"quantity": 1.0, "price": 94591.9992, "total": 94592.0, "timestamp": "2024-11-20 10:26:50"}, {"quantity": 2.0, "price": 94591.9992, "total": 189184.0, "timestamp": "2024-11-20 10:27:03"}, {"quantity": 3.0, "price": 94501.7703, "total": 283505.31, "timestamp": "2024-11-20 10:29:58"}], "total_cost": 567281.31}
+{
+    "transactions": [
+        {
+            "quantity": 1.0,
+            "price": 93359.8781,
+            "total": 93359.88,
+            "timestamp": "2024-11-20 11:31:36"
+        },
+        {
+            "quantity": 2.0,
+            "price": 93359.8781,
+            "total": 186719.76,
+            "timestamp": "2024-11-20 11:31:39"
+        },
+        {
+            "quantity": 2.0,
+            "price": 93476.661,
+            "total": 186953.32,
+            "timestamp": "2024-11-20 11:32:04"
+        }
+    ],
+    "total_cost": 467032.96
+}
