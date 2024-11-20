@@ -1,7 +1,10 @@
+import datetime
+import json
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 import uvicorn
+from bitcoin import get_bitcoin_price
 import weather
 
 app = FastAPI()
@@ -129,6 +132,7 @@ def get_weather(request: Request):
 async def post_weather(request: Request):
     form = await request.form()
     city = form.get("city")
+    city = city.replace(" ", "%20")
     result = weather.get_temp(city)
     return templates.TemplateResponse(
         "weather-result.html",
@@ -136,6 +140,78 @@ async def post_weather(request: Request):
             "request": request,
             "city": city.capitalize(),
             "temperature": result,
+        },
+    )
+
+
+"""
+Bitcoin Example
+"""
+
+# "/bitcoin" -> form, where users can buy
+# "/bitcoin/transactions" -> show all the transactions
+
+bitcoins = {
+    "transactions": [],
+    "total_cost": 0,
+    # "total_cost_comma": "0",
+}
+
+
+# def save_bitcoins():
+#     with open("data/bitcoins.json", "w") as file:
+#         json.dump(bitcoins, file)
+
+
+# def load_bitcoins():
+#     global bitcoins
+#     with open("data/bitcoins.json", "r") as file:
+#         bitcoins = json.load(file)
+
+
+# load_bitcoins()
+
+
+@app.get("/bitcoin", response_class=HTMLResponse)
+def show_buy_bitcoin_form(request: Request):
+    return templates.TemplateResponse("buy-bitcoin.html", {"request": request})
+
+
+@app.post("/bitcoin", response_class=HTMLResponse)
+async def buy_bitcoin(request: Request):
+    """Process the form submission to fake-buy bitcoin"""
+    form = await request.form()
+    quant = form.get("quantity")
+    quant = float(quant)
+    price = get_bitcoin_price()
+    total = price * quant
+    total = round(total, 2)
+    bitcoins["transactions"].append(
+        {
+            "quantity": quant,
+            "price": price,
+            "total": total,
+            "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        }
+    )
+    bitcoins["total_cost"] += total
+    # bitcoins['total_cost_comma'] = f'{str(total):,}'
+
+    # save_bitcoins()
+
+    # return templates.TemplateResponse(
+    #     "bitcoin.html", {"request": request, "bitcoins": bitcoins}
+    # )
+    return RedirectResponse(url="/bitcoin/transactions", status_code=303)
+
+
+@app.get("/bitcoin/transactions", response_class=HTMLResponse)
+def show_all_bitcoin_transactions(request: Request):
+    return templates.TemplateResponse(
+        "bitcoin.html",
+        {
+            "request": request,
+            "bitcoins": bitcoins,
         },
     )
 
