@@ -1,16 +1,27 @@
 import datetime
 import json
 import os
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.templating import Jinja2Templates
+
 import uvicorn
-from bitcoin import get_bitcoin_price
 import weather
+import yfinance as yf
+from bitcoin import get_bitcoin_price
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 templates = Jinja2Templates("templates")
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # @app.get("/")
 # async def root():
@@ -225,6 +236,23 @@ def show_all_bitcoin_transactions(request: Request):
             "bitcoins": bitcoins,
         },
     )
+
+
+"""
+Find Stock Price API Example
+"""
+
+
+@app.get("/find_stock_price")
+async def find_stock_price(stock: str):
+    """Find the price of a stock"""
+    try:
+        ticker = yf.Ticker(stock)
+        info = ticker.info
+        current_price = info.get("currentPrice")
+    except Exception:
+        current_price = 0
+    return JSONResponse({"stock": stock.upper(), "price": f"{current_price:.2f}"})
 
 
 if __name__ == "__main__":
