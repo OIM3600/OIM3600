@@ -269,7 +269,7 @@ def show_image(request: Request):
         "show-image.html",
         {
             "request": request,
-            "image_src": data["image_file"],
+            "image_path": data["image_file"],
             "image_alt": data["image_alt"],
         },
     )
