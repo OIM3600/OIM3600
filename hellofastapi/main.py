@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 import weather
 import yfinance as yf
@@ -13,6 +14,7 @@ from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 templates = Jinja2Templates("templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 app.add_middleware(
@@ -253,6 +255,19 @@ async def find_stock_price(stock: str):
     except Exception:
         current_price = 0
     return JSONResponse({"stock": stock.upper(), "price": f"{current_price:.2f}"})
+
+
+"""
+Serving Image
+"""
+
+
+@app.get("/image", response_class=HTMLResponse)
+def show_image(request: Request):
+    data = {"image": "Babson", "image_path": "babson.jpg"}
+    return templates.TemplateResponse(
+        "show-image.html", {"request": request, "image": data["image_path"]}
+    )
 
 
 if __name__ == "__main__":
