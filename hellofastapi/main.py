@@ -264,9 +264,14 @@ Serving Image
 
 @app.get("/image", response_class=HTMLResponse)
 def show_image(request: Request):
-    data = {"image": "Babson", "image_path": "babson.jpg"}
+    data = {"image_alt": "Babson Campus", "image_file": "babson.jpg"}
     return templates.TemplateResponse(
-        "show-image.html", {"request": request, "image": data["image_path"]}
+        "show-image.html",
+        {
+            "request": request,
+            "image_src": data["image_file"],
+            "image_alt": data["image_alt"],
+        },
     )
 
 
